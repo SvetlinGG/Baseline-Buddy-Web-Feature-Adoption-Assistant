@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AnalyzerService } from './services/analyzer.service';
 
@@ -10,15 +10,20 @@ import { AnalyzerService } from './services/analyzer.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  code = '';
-  type: 'css' | 'js' | 'html' = 'css';
-  results: any[] = [];
+  code = signal<string>('');
+  type = signal<'css' | 'js' | 'html'>('css');
+  results = signal<any[]>([]);
 
   constructor(private analyzer: AnalyzerService) {}
 
-  analyze(){
-    this.analyzer.analyzeCode(this.type, this.code).subscribe(res => {
-      this.results = res.results;
+  // analyze(): void {
+  //   const results: { message: string; mdn: string }[] = [];
+  //   const codeValue = this.code();
+  //   const typeValue = this.type();
+  // }
+  analyze() {
+    this.analyzer.analyzeCode(this.type(), this.code()).subscribe(res => {
+      this.results.set(res.results);
     });
   }
 }

@@ -1,1 +1,26 @@
-
+<div class="container">
+    <h1>Baseline Buddy – Angular UI</h1>
+  
+    <textarea [(value)]="code" rows="10" cols="60" placeholder="Paste code here"></textarea>
+    <br />
+  
+    <select [(value)]="type">
+      <option value="css">CSS</option>
+      <option value="js">JavaScript</option>
+      <option value="html">HTML</option>
+    </select>
+  
+    <button (click)="analyze()">Analyze</button>
+  
+    <ul>
+      @for (r of results(); track $index) {
+        <li>
+          {{ r.message }}
+          <a [href]="r.mdn" target="_blank">Docs</a>
+        </li>
+      }
+    </ul>
+  </div>
+ <router-outlet></router-outlet>
+  
+  
