@@ -1,0 +1,21 @@
+{
+    "css:selector:has": {
+      "title": "CSS :has()",
+      "baseline": "2024",
+      "mdn": "https://developer.mozilla.org/docs/Web/CSS/:has",
+      "fallback": "Use JS to traverse parent or restructure DOM."
+    },
+    "js:view-transitions": {
+      "title": "View Transitions API",
+      "baseline": "2024",
+      "mdn": "https://developer.mozilla.org/docs/Web/API/Document/startViewTransition",
+      "fallback": "Fallback with CSS opacity/transform animations."
+    },
+    "html:dialog": {
+      "title": "<dialog>",
+      "baseline": "2023",
+      "mdn": "https://developer.mozilla.org/docs/Web/HTML/Element/dialog",
+      "fallback": "Use ARIA modal pattern or polyfill."
+    }
+  }
+  
