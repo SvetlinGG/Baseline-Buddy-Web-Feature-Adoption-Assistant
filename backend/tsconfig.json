@@ -7,14 +7,14 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",
-    "target": "esnext",
+    "module": "CommonJS",
+    "target": "ES2020",
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    //"moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "types": ["node"],
     // For nodejs:
@@ -42,7 +42,7 @@
     // Recommended Options
     
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
