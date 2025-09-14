@@ -2,16 +2,17 @@
     <h1>Baseline Buddy – Angular UI</h1>
   
     <textarea [value]="code()"
-    (input)="code.set(($event.target as HTMLTextAreaElement).value)"
+    (input)="onCodeInput($event)"
      rows="10" 
      cols="60" 
      placeholder="Paste your code here"
      ></textarea>
     <br />
+
     <label for="type">Select type:</label>
     <select id="type"
     [value]="type()"
-    (change)="type.set($any($event.target).value)">
+    (change)="onTypeChange($event)">
       <option value="css">CSS</option>
       <option value="js">JavaScript</option>
       <option value="html">HTML</option>
@@ -23,7 +24,7 @@
       @for (r of results(); track $index) {
         <li>
           {{ r.message }}
-          <a [href]="r.mdn" target="_blank">Docs</a>
+          <a [href]="r.mdn" target="_blank" rel="noopener">Docs</a>
         </li>
       }
     </ul>

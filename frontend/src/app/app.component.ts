@@ -15,21 +15,24 @@ export class AppComponent {
   results = signal<any[]>([]);
 
   constructor(private analyzer: AnalyzerService) {}
+  onCodeInput(event: Event) {
+    const value = (event.target as HTMLTextAreaElement).value;
+    this.code.set(value);
+  }
 
-  // analyze(): void {
-  //   const results: { message: string; mdn: string }[] = [];
-  //   const codeValue = this.code();
-  //   const typeValue = this.type();
-  // }
+  onTypeChange(event: Event) {
+    const v = (event.target as HTMLSelectElement).value as 'html' | 'css' | 'js';
+    this.type.set(v);
+  }
+
   analyze() {
+    console.log('👉 Sending:', { type: this.type(), code: this.code() });
     this.analyzer.analyzeCode(this.type(), this.code()).subscribe({
       next: (res) => {
-        console.log('Response from backend:', res); 
-        this.results.set(res.results);
+        console.log('✅ Response:', res);
+        this.results.set(res.results ?? []);
       },
-      error: (err) => {
-        console.error('Error:', err);
-      }
+      error: (err) => console.error('❌ Error:', err)
     });
   }
 }
