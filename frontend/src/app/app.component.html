@@ -1,10 +1,12 @@
 <div class="container">
     <h1>Baseline Buddy – Angular UI</h1>
   
-    <textarea [(value)]="code" rows="10" cols="60" placeholder="Paste code here"></textarea>
+    <textarea [(value)]="code" rows="10" cols="60" placeholder="Paste your code here"></textarea>
     <br />
-  
-    <select [(value)]="type">
+    <label for="type">Select type:</label>
+    <select id="type"
+    [value]="type()"
+    (change)="type.set($any($event.target).value)">
       <option value="css">CSS</option>
       <option value="js">JavaScript</option>
       <option value="html">HTML</option>
@@ -20,6 +22,10 @@
         </li>
       }
     </ul>
+
+    <ng-template #noResults>
+        <p>No issues detected yet.</p>
+    </ng-template>
   </div>
  <router-outlet></router-outlet>
   
