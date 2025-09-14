@@ -1,7 +1,7 @@
-import data from "../data/baseline-map.json";
+const data = require("../data/baseline-map.json");
 
-export function analyzeJS(code: string) {
-  const results: any[] = [];
+function analyzeJS(code) {
+  const results = [];
   if (code.includes("document.startViewTransition")) {
     results.push({
       id: "js:view-transitions",
@@ -11,3 +11,6 @@ export function analyzeJS(code: string) {
   }
   return results;
 }
+
+module.exports = { analyzeJS };
+

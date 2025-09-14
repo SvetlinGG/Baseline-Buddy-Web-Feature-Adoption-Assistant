@@ -1,8 +1,8 @@
 
-import data from "../data/baseline-map.json";
+const data = require("../data/baseline-map.json");
 
-export function analyzeHTML(code: string) {
-  const results: any[] = [];
+function analyzeHTML(code) {
+  const results = [];
   if (code.includes("<dialog")) {
     results.push({
       id: "html:dialog",
@@ -12,3 +12,5 @@ export function analyzeHTML(code: string) {
   }
   return results;
 }
+
+module.exports = { analyzeHTML };
