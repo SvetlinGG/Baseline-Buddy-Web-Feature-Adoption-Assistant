@@ -1,7 +1,12 @@
 <div class="container">
     <h1>Baseline Buddy – Angular UI</h1>
   
-    <textarea [(value)]="code" rows="10" cols="60" placeholder="Paste your code here"></textarea>
+    <textarea [value]="code()"
+    (input)="code.set(($event.target as HTMLTextAreaElement).value)"
+     rows="10" 
+     cols="60" 
+     placeholder="Paste your code here"
+     ></textarea>
     <br />
     <label for="type">Select type:</label>
     <select id="type"

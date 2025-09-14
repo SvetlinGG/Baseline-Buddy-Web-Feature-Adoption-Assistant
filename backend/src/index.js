@@ -11,6 +11,7 @@ app.use(cors());
 app.post("/analyze", (req, res) => {
   console.log("👉 Request body:", req.body);
   const { type, code } = req.body;
+  console.log("👉 type:", type, "code:", code);
   let results = [];
 
   if (type === "css") results = analyzeCSS(code);
