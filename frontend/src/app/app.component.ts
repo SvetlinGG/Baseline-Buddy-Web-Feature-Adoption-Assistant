@@ -22,8 +22,14 @@ export class AppComponent {
   //   const typeValue = this.type();
   // }
   analyze() {
-    this.analyzer.analyzeCode(this.type(), this.code()).subscribe(res => {
-      this.results.set(res.results);
+    this.analyzer.analyzeCode(this.type(), this.code()).subscribe({
+      next: (res) => {
+        console.log('Response from backend:', res); 
+        this.results.set(res.results);
+      },
+      error: (err) => {
+        console.error('Error:', err);
+      }
     });
   }
 }

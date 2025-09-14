@@ -9,6 +9,6 @@ import { importProvidersFrom } from '@angular/core';
 bootstrapApplication(AppComponent,{
   providers: [
     provideHttpClient(),
-    provideForms()
+    //provideForms()
   ]
 }).catch((err) => console.error(err));

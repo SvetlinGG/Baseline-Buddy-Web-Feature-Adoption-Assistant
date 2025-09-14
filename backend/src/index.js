@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/analyze", (req, res) => {
+  console.log("👉 Request body:", req.body);
   const { type, code } = req.body;
   let results = [];
 
