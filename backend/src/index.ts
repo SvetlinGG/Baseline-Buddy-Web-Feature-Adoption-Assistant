@@ -1,8 +1,8 @@
 
 import express from "express";
-import { analyzeCSS } from "./analyzers/css";
-import { analyzeJS } from "./analyzers/js";
-import { analyzeHTML } from "./analyzers/html";
+import { analyzeCSS } from "./analyzers/css.ts";
+import { analyzeJS } from "./analyzers/js.ts";
+import { analyzeHTML } from "./analyzers/html.ts";
 
 
 const app = express();
