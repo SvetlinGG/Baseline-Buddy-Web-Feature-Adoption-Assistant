@@ -17,6 +17,5 @@
       "mdn": "https://developer.mozilla.org/docs/Web/HTML/Element/dialog",
       "fallback": "Use ARIA modal pattern or polyfill."
     }
-    
   }
   

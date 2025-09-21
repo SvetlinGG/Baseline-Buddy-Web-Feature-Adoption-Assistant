@@ -2,8 +2,12 @@
   "name": "packages",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
+  "workspaces": ["packages/*", "backend", "frontend"],
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "start": "node core-analyzer/index.js"
   },
   "keywords": [],
   "author": "",
