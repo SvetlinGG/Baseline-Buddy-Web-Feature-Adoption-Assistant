@@ -1,22 +1,30 @@
 {
-    "name": "baseline-buddy",
-    "displayName": "Baseline Buddy",
-    "publisher": "your-name",
-    "version": "0.0.1",
-    "engines": { "vscode": "^1.90.0" },
-    "activationEvents": [
-      "onLanguage:html",
-      "onLanguage:css",
-      "onLanguage:javascript"
-    ],
-    "main": "./src/extension.js",
-    "contributes": {
-      "commands": [
-        { "command": "baselineBuddy.openDocs", "title": "Open MDN Docs" }
-      ]
-    },
-    "dependencies": {
-      "@baseline-buddy/core-analyzer": "file:../core-analyzer"
-    }
+  "name": "baseline-buddy",
+  "displayName": "Baseline Buddy",
+  "description": "Surface Baseline readiness inside VS Code: diagnostics for modern web features with quick links to MDN.",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Linters", "Other"],
+  "keywords": ["Baseline", "MDN", "web features", "linters", "compatibility"],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:css",
+    "onLanguage:javascript"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "baselineBuddy.openDocs", "title": "Baseline Buddy: Open MDN" }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node -e \"console.log('Ready: open this folder in VS Code and press F5 (Run Extension).')\""
+  },
+  "dependencies": {
+    "@baseline-buddy/core-analyzer": "file:../core-analyzer"
   }
+}
+
   
