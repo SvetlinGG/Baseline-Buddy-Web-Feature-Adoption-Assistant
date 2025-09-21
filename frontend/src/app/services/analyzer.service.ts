@@ -10,7 +10,12 @@ export class AnalyzerService {
 
   constructor(private http: HttpClient) { }
 
-  analyzeCode(type: string, code: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/analyze`, {type, code});
+  // analyzeCode(type: string, code: string): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/analyze`, {type, code});
+  // }
+  analyzeCode(type: 'html'|'css'|'js', code: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/analyze`, { type, code }, {
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }

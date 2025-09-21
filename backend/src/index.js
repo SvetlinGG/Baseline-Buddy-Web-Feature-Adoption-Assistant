@@ -22,3 +22,4 @@ app.post("/analyze", (req, res) => {
 app.listen(3001, () => {
   console.log("✅ Baseline Buddy backend running on http://localhost:3001");
 });
+
