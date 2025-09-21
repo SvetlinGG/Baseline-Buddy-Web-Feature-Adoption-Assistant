@@ -9,6 +9,7 @@ function activate(context) {
   function analyze(doc) {
     if (!doc) return;
     const lang = doc.languageId;
+    console.log('👉 Analyzing:', doc.fileName, 'lang:', lang);
     if (!['html','css','javascript'].includes(lang)) return;
 
     const text = doc.getText();
@@ -17,6 +18,8 @@ function activate(context) {
     if (lang === 'css') results = analyzeCSS(text);
     if (lang === 'javascript') results = analyzeJS(text);
 
+    console.log('👉 Analyzer results:', results);
+
     const issues = results.map(r => {
       const needle =
         r.id === 'html:dialog' ? '<dialog' :
@@ -24,8 +27,8 @@ function activate(context) {
         r.id === 'js:view-transitions' ? 'startViewTransition' : '';
       const idx = needle ? text.indexOf(needle) : -1;
 
-      const start = idx >= 0 ? doc.positionAt(idx) : new vscode.Position(0,0);
-      const end   = idx >= 0 ? doc.positionAt(idx + needle.length) : new vscode.Position(0,1);
+      const start = idx >= 0 ? doc.positionAt(idx) : new vscode.Position(0, 0);
+      const end   = idx >= 0 ? doc.positionAt(idx + needle.length) : new vscode.Position(0, 1);
 
       const d = new vscode.Diagnostic(
         new vscode.Range(start, end),
