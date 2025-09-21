@@ -12,8 +12,21 @@
     "onLanguage:javascript"
   ],
   "contributes": {
+    "configuration": {
+    "type": "object",
+    "title": "Baseline Buddy",
+    "properties": {
+      "baselineBuddy.severity": {
+        "type": "string",
+        "enum": ["warning", "info", "error"],
+        "default": "warning",
+        "description": "Set severity level for non-Baseline features."
+      }
+    }
+  },
     "commands": [
-      { "command": "baselineBuddy.openDocs", "title": "Baseline Buddy: Open MDN" }
+      { "command": "baselineBuddy.openDocs", 
+      "title": "Baseline Buddy: Open MDN" }
     ]
   },
   "scripts": {
