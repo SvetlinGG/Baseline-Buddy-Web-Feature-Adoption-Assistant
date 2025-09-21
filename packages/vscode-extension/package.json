@@ -1,13 +1,10 @@
 {
   "name": "baseline-buddy",
   "displayName": "Baseline Buddy",
-  "description": "Surface Baseline readiness inside VS Code: diagnostics for modern web features with quick links to MDN.",
   "version": "0.0.1",
   "publisher": "your-publisher-id",
   "license": "MIT",
   "engines": { "vscode": "^1.90.0" },
-  "categories": ["Linters", "Other"],
-  "keywords": ["Baseline", "MDN", "web features", "linters", "compatibility"],
   "main": "./src/extension.js",
   "activationEvents": [
     "onLanguage:html",
@@ -20,11 +17,9 @@
     ]
   },
   "scripts": {
-    "postinstall": "node -e \"console.log('Ready: open this folder in VS Code and press F5 (Run Extension).')\""
+    "postinstall": "node -e \"console.log('Ready: press F5 (Run Extension) in VS Code.')\""
   },
-  "dependencies": {
-    "@baseline-buddy/core-analyzer": "file:../core-analyzer"
-  }
+  "dependencies": {}
 }
 
   

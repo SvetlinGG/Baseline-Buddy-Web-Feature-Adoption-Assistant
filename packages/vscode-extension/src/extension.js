@@ -1,18 +1,17 @@
 const vscode = require('vscode');
 
 function activate(context) {
-  console.log('✅ Baseline Buddy activated (sanity test)');
-
+  console.log('✅ Baseline Buddy activated (SANITY)');
   const diags = vscode.languages.createDiagnosticCollection('baseline-buddy');
   context.subscriptions.push(diags);
 
   function setTestDiagnostic(doc) {
     if (!doc) return;
-    console.log('👉 Opened:', doc.fileName, 'lang:', doc.languageId);
-    if (doc.languageId !== 'html') return;
+    const lang = doc.languageId;
+    console.log('👉 Opened:', doc.fileName, 'lang:', lang);
+    if (lang !== 'html') return;
 
     const text = doc.getText();
-    // Ако файлът съдържа <dialog>, слагаме 1 тестова диагноза
     const idx = text.indexOf('<dialog');
     const issues = [];
     if (idx >= 0) {
@@ -41,4 +40,5 @@ function activate(context) {
 function deactivate() {}
 
 module.exports = { activate, deactivate };
+
 
