@@ -1,5 +1,5 @@
 
-# Baseline Buddy -- Web Feature Adoption Assistant
+
 
 ⚡ **Baseline Buddy** helps web developers adopt modern web features
 faster and with confidence.\
