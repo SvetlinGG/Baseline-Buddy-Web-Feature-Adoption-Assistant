@@ -3,6 +3,8 @@ const cors = require("cors");
 const { analyzeCSS } = require("./analyzers/css");
 const { analyzeJS } = require("./analyzers/js");
 const { analyzeHTML } = require("./analyzers/html");
+const { analyzeHTML, analyzeCSS, analyzeJS } = require('../../packages/core-analyzer');
+
 
 const app = express();
 app.use(express.json());

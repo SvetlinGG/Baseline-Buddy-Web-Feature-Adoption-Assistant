@@ -17,5 +17,6 @@
       "mdn": "https://developer.mozilla.org/docs/Web/HTML/Element/dialog",
       "fallback": "Use ARIA modal pattern or polyfill."
     }
+    "name": {"@baseline-buddy/core-analyzer","version":"1.0.0","main":"index.js","license":"MIT"} 
   }
   
