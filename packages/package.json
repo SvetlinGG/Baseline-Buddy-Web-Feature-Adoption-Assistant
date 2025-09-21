@@ -1,20 +1,23 @@
 {
-  "name": "packages",
+  "name": "@baseline-buddy/core-analyzer",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
-  "workspaces": ["packages/*", "backend", "frontend"],
-
+  "workspaces": [
+    "packages/*",
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    
     "start": "node core-analyzer/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@types/vscode": "^1.104.0",
+    "@vscode/test-electron": "^2.5.2",
     "nodemon": "^3.1.10"
-  },
-  "name":"@baseline-buddy/core-analyzer","version":"1.0.0","main":"index.js","license":"MIT" 
+  }
 }
