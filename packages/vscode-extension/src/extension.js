@@ -4,15 +4,16 @@ const { analyzeHTML, analyzeCSS, analyzeJS } = require('@baseline-buddy/core-ana
 function activate(context) {
   const diagnostics = vscode.languages.createDiagnosticCollection('baseline-buddy');
   context.subscriptions.push(diagnostics);
-
+  
   function analyzeDocument(doc) {
     if (!['html','css','javascript'].includes(doc.languageId)) return;
 
     const text = doc.getText();
+    console.log("👉 LanguageId:", doc.languageId);
     let results = [];
     if (doc.languageId === 'html') results = analyzeHTML(text);
-    if (doc.languageId === 'css') results = analyzeCSS(text);
-    if (doc.languageId === 'javascript') results = analyzeJS(text);
+    // if (doc.languageId === 'css') results = analyzeCSS(text);
+    // if (doc.languageId === 'javascript') results = analyzeJS(text);
 
     const issues = results.map(r => {
       const idx = text.indexOf(r.title.includes('dialog') ? '<dialog' :
