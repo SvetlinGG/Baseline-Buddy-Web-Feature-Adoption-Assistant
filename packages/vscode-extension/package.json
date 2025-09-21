@@ -1,0 +1,22 @@
+{
+    "name": "baseline-buddy",
+    "displayName": "Baseline Buddy",
+    "publisher": "your-name",
+    "version": "0.0.1",
+    "engines": { "vscode": "^1.90.0" },
+    "activationEvents": [
+      "onLanguage:html",
+      "onLanguage:css",
+      "onLanguage:javascript"
+    ],
+    "main": "./src/extension.js",
+    "contributes": {
+      "commands": [
+        { "command": "baselineBuddy.openDocs", "title": "Open MDN Docs" }
+      ]
+    },
+    "dependencies": {
+      "@baseline-buddy/core-analyzer": "file:../core-analyzer"
+    }
+  }
+  
