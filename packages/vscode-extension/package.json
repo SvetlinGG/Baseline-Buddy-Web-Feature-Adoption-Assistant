@@ -19,7 +19,9 @@
   "scripts": {
     "postinstall": "node -e \"console.log('Ready: press F5 (Run Extension) in VS Code.')\""
   },
-  "dependencies": {}
+  "dependencies": {
+    "@baseline-buddy/core-analyzer": "file:../core-analyzer"
+  }
 }
 
   
