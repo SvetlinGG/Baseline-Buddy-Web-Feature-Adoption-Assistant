@@ -1,55 +1,41 @@
 const vscode = require('vscode');
-const { analyzeHTML, analyzeCSS, analyzeJS } = require('@baseline-buddy/core-analyzer');
 
 function activate(context) {
-  console.log("✅ Baseline Buddy activated");
-  const diagnostics = vscode.languages.createDiagnosticCollection('baseline-buddy');
-  context.subscriptions.push(diagnostics);
+  console.log('✅ Baseline Buddy activated (sanity test)');
 
-  function analyze(doc) {
+  const diags = vscode.languages.createDiagnosticCollection('baseline-buddy');
+  context.subscriptions.push(diags);
+
+  function setTestDiagnostic(doc) {
     if (!doc) return;
-    const lang = doc.languageId;
-    if (!['html','css','javascript'].includes(lang)) return;
+    console.log('👉 Opened:', doc.fileName, 'lang:', doc.languageId);
+    if (doc.languageId !== 'html') return;
 
     const text = doc.getText();
-    let results = [];
-    if (lang === 'html') results = analyzeHTML(text);
-    if (lang === 'css')  results = analyzeCSS(text);
-    if (lang === 'javascript') results = analyzeJS(text);
-
-    const issues = results.map(r => {
-      // много опростено намиране на позиция
-      const needle =
-        r.id === 'html:dialog' ? '<dialog' :
-        r.id === 'css:selector:has' ? ':has(' :
-        r.id === 'js:view-transitions' ? 'startViewTransition' :
-        '';
-      const idx = needle ? text.indexOf(needle) : -1;
-
-      const start = idx >= 0 ? doc.positionAt(idx) : new vscode.Position(0,0);
-      const end   = idx >= 0 ? doc.positionAt(idx + needle.length) : new vscode.Position(0,1);
-
+    // Ако файлът съдържа <dialog>, слагаме 1 тестова диагноза
+    const idx = text.indexOf('<dialog');
+    const issues = [];
+    if (idx >= 0) {
+      const start = doc.positionAt(idx);
+      const end = doc.positionAt(idx + '<dialog'.length);
       const d = new vscode.Diagnostic(
         new vscode.Range(start, end),
-        r.message,
+        'SANITY: Found <dialog> (test diagnostic)',
         vscode.DiagnosticSeverity.Warning
       );
       d.source = 'BaselineBuddy';
-      // клик по линка в Problems панела отваря MDN
-      d.code = { value: 'Baseline MDN', target: vscode.Uri.parse(r.mdn) };
-      return d;
-    });
-
-    diagnostics.set(doc.uri, issues);
-    console.log("👉 Diagnostics:", issues.length);
+      issues.push(d);
+    }
+    diags.set(doc.uri, issues);
+    console.log('👉 Diagnostics count:', issues.length);
   }
 
   context.subscriptions.push(
-    vscode.workspace.onDidOpenTextDocument(analyze),
-    vscode.workspace.onDidChangeTextDocument(e => analyze(e.document))
+    vscode.workspace.onDidOpenTextDocument(setTestDiagnostic),
+    vscode.workspace.onDidChangeTextDocument(e => setTestDiagnostic(e.document))
   );
 
-  if (vscode.window.activeTextEditor) analyze(vscode.window.activeTextEditor.document);
+  if (vscode.window.activeTextEditor) setTestDiagnostic(vscode.window.activeTextEditor.document);
 }
 
 function deactivate() {}
